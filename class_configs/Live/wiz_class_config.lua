@@ -28,6 +28,18 @@ return {
         },
     },
     ['AbilitySets']     = {
+        ['ManaWard'] = {
+            "Ward of Mana V",
+            "Ward of Mana IV",
+            "Ward of Mana III",
+            "Ward of Mana II",
+            "Ward of Mana I",
+        },
+        ['ManaRejuv'] = {
+            "Rejuvenating Mana III",
+            "Rejuvenating Mana II",
+            "Rejuvenating Mana I",
+        },
         ['AllianceSpell'] = {
             "Frostbound Covariance",
             "Frostbound Conjunction",
@@ -1165,6 +1177,20 @@ return {
             },
         },
         ['Downtime'] = {
+            {
+                name = "ManaWard",
+                type = "Spell",
+                cond = function(self, spell)
+                    return Casting.SelfBuffCheck(spell)
+                end,
+            },
+            {
+                name = "ManaRejuv",
+                type = "Spell",
+                cond = function(self, spell)
+                    return Casting.SelfBuffCheck(spell)
+                end,
+            },
             {
                 name = "SelfHPBuff",
                 type = "Spell",

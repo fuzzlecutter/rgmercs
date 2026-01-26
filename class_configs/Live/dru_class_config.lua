@@ -206,7 +206,7 @@ local _ClassConfig = {
             "Sterivida",
             "Sanavida",
             "Benevida",
-            "Granvida",
+            --"Granvida",
             "Puravida",
             "Pure Life",
             "Chlorotrope",

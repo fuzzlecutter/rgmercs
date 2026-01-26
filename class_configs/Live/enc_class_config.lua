@@ -856,7 +856,7 @@ local _ClassConfig    = {
         },
         { --Pet Buffs if we have one, timer because we don't need to constantly check this
             name = 'PetBuff',
-            timer = 60,
+            timer = 6,
             targetId = function(self) return mq.TLO.Me.Pet.ID() > 0 and { mq.TLO.Me.Pet.ID(), } or {} end,
             cond = function(self, combat_state)
                 return combat_state == "Downtime" and mq.TLO.Me.Pet.ID() > 0 and Casting.OkayToPetBuff()
@@ -1391,6 +1391,10 @@ local _ClassConfig    = {
             },
         },
         ['Burn'] = {
+            {
+                name = "Charmed: Fury",
+                type = "AA",
+            },
             {
                 name = "Illusions of Grandeur",
                 type = "AA",

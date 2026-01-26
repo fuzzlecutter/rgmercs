@@ -2185,7 +2185,7 @@ function Module:GiveTime(combat_state)
         --/if (${SubDefined[${Zone.ShortName}_PreNav_${Pull_FarmWPNum}]}) /call ${Zone.ShortName}_PreNav_${Pull_FarmWPNum}
 
         local wpData = self:GetWPById(self:GetCurrentWpId())
-        self:SetPullState(PullStates.PULL_MOVING_TO_WP, string.format("%0.2f, %0.2f, %0.2f", wpData.y, wpData.x, wpData.z))
+        self:SetPullState(PullStates.PULL_MOVING_TO_WP, string.format("(WP Id: %d) %0.2f, %0.2f, %0.2f", self:GetCurrentWpId(), wpData.y, wpData.x, wpData.z))
         if not self:NavToWaypoint(string.format("%0.2f, %0.2f, %0.2f", wpData.y, wpData.x, wpData.z)) then
             self:SetPullState(PullStates.PULL_NAV_INTERRUPT, "")
             return

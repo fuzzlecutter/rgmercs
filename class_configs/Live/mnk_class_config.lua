@@ -351,6 +351,10 @@ local _ClassConfig = {
                     return mq.TLO.Me.PctHPs() < 50
                 end,
             },
+            {
+                name = "Hide",
+                type = "Ability",
+            },
         },
         ['Emergency'] = {
             {
@@ -583,9 +587,6 @@ local _ClassConfig = {
             {
                 name = "Intimidation",
                 type = "Ability",
-                cond = function(self, abilityName)
-                    return Casting.AARank("Intimidation") > 1
-                end,
             },
             {
                 name = "Flying Kick",
@@ -600,6 +601,18 @@ local _ClassConfig = {
             },
             {
                 name = "Tiger Claw",
+                type = "Ability",
+            },
+            {
+                name = "Round Kick",
+                type = "Ability",
+            },
+            {
+                name = "Kick",
+                type = "Ability",
+            },
+            {
+                name = "Disarm",
                 type = "Ability",
             },
         },

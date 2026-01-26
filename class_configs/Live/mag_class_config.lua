@@ -188,6 +188,18 @@ _ClassConfig      = {
             "Firebolt of Tallon",
             "Seeking Flame of Seukor",
         },
+        ['BigAoETime'] = {
+            "Scintillation",
+            "Flame Arc",
+            "Flame Flux",
+            "Fire Flux",
+        },
+        ['SmallAoETime'] = {
+            "Scintillation",
+            "Flame Arc",
+            "Flame Flux",
+            "Fire Flux",
+        },
         ['MagicDD'] = { -- Magic does not have any faster casts like Fire, we have only these.
             "Blade Strike",
             "Rock of Taelosia",
@@ -309,6 +321,12 @@ _ClassConfig      = {
             "Shielding",
             "Lesser Shielding",
             "Minor Shielding",
+        },
+        ['ManaWard'] = {
+            "Ward of Mana V",
+        },
+        ['ManaRejuv'] = {
+            "Rejuvenating Mana III",
         },
         ['ShortDurDmgShield'] = {
             -- Use at the start of the DPS loop
@@ -503,7 +521,7 @@ _ClassConfig      = {
             "Renewal of Jerikor",
             "Planar Renewal",
             "Transon's Elemental Renewal",
-            "Transon's Elemental Infusion",
+            --"Transon's Elemental Infusion",
             "Refresh Summoning",
             "Renew Summoning",
             "Renew Elements",
@@ -1492,6 +1510,22 @@ _ClassConfig      = {
                 name = "Servant of Ro",
                 type = "AA",
             },
+            {
+                name = "SmallAoETime",
+                type = "Spell",
+                cond = function(self, spell, target)
+                    if Config:GetSetting('ElementChoice') ~= 1 then return false end
+                    return Casting.OkayToNuke()
+                end,
+            },
+            {
+                name = "BigAoETime",
+                type = "Spell",
+                cond = function(self, spell, target)
+                    if Config:GetSetting('ElementChoice') ~= 1 then return false end
+                    return Casting.OkayToNuke()
+                end,
+            },
         },
         ['DPS PET'] = {
             {
@@ -1735,6 +1769,20 @@ _ClassConfig      = {
                 end,
             },
             {
+                name = "ManaWard",
+                type = "Spell",
+                cond = function(self, spell)
+                    return Casting.SelfBuffCheck(spell)
+                end,
+            },
+            {
+                name = "ManaRejuv",
+                type = "Spell",
+                cond = function(self, spell)
+                    return Casting.SelfBuffCheck(spell)
+                end,
+            },
+            {
                 name = "Thaumaturge's Unity",
                 type = "AA",
                 cond = function(self, aaName)
@@ -1905,6 +1953,7 @@ _ClassConfig      = {
         {
             gem = 6,
             spells = {
+                { name = "SmallAoETime", },
                 { name = "GroupCotH", },
                 { name = "ManaRodSummon", },
                 { name = "PetHealSpell", },
@@ -1925,7 +1974,7 @@ _ClassConfig      = {
             spells = {
                 { name = "PetManaNuke", },
                 { name = "PetHealSpell", },
-                { name = "SingleCotH",       cond = function() return not Casting.CanUseAA('Call of the Hero') end, },
+                --{ name = "SingleCotH",       cond = function() return not Casting.CanUseAA('Call of the Hero') end, },
                 { name = "LongDurDmgShield", },
             },
         },
@@ -1942,6 +1991,7 @@ _ClassConfig      = {
             gem = 10,
             cond = function(self, gem) return mq.TLO.Me.NumGems() >= gem end,
             spells = {
+                { name = "BigAoETime", },
                 { name = "EarthPetItemSummon", },
                 { name = "PetHealSpell", },
                 { name = "LongDurDmgShield", },
